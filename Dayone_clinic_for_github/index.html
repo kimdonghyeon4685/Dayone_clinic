@@ -300,6 +300,7 @@ p { font-size: 14.5px; color: var(--ink-mid); line-height: 1.9; max-width: 620px
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 0;
+  place-items: center;
 }
 .num-item {
   padding: 0 2rem;
@@ -360,6 +361,29 @@ p { font-size: 14.5px; color: var(--ink-mid); line-height: 1.9; max-width: 620px
   padding: 4px 12px; border-radius: 20px;
   background: rgba(91,141,184,0.08); color: var(--blue-deep);
   border: 0.5px solid rgba(91,141,184,0.2);
+}
+.problem-card--wide {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  align-items: flex-start;
+}
+.problem-card--wide .problem-card__heading {
+  flex: 0 0 auto;
+  min-width: 220px;
+}
+.problem-card--wide .problem-card__text {
+  flex: 1 1 100%;
+  max-width: 100%;
+  padding-top: 1rem;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+  min-width: 0;
+}
+.problem-card--wide .problem-badge--float {
+  align-self: flex-end;
+  flex-shrink: 0;
+  margin-top: 0;
 }
 
 /* ── DARK POSITIONING BAND ── */
@@ -821,13 +845,13 @@ footer {
       <p>웹사이트와 SNS의 시각적 완성도 부족으로 온라인 유입 전환율이 저조합니다. 20–40대 여성 타겟의 탐색 채널은 인스타그램·웹이 중심입니다.</p>
       <span class="problem-badge">Digital Gap</span>
     </div>
-    <div class="problem-card reveal" style="grid-column: 1 / -1; display: flex; gap: 2rem; align-items: flex-start;">
-      <div style="flex: 0 0 auto;">
+    <div class="problem-card reveal problem-card--wide">
+      <div class="problem-card__heading">
         <span class="problem-idx">04 · Problem</span>
         <h3>경쟁사 대비 차별성 부재</h3>
       </div>
-      <p style="flex: 1; max-width:100%; padding-top: 1.5rem;">동급 피부·성형 클리닉과의 비주얼 차별화 포인트가 없습니다. 같은 결로 진입하면 후발 주자의 한계를 넘기 어렵습니다. 브랜딩이 가장 경제적인 마케팅입니다.</p>
-      <span class="problem-badge" style="align-self: flex-end; flex-shrink:0;">Differentiation</span>
+      <p class="problem-card__text">동급 피부·성형 클리닉과의 비주얼 차별화 포인트가 없습니다. 같은 결로 진입하면 후발 주자의 한계를 넘기 어렵습니다. 브랜딩이 가장 경제적인 마케팅입니다.</p>
+      <span class="problem-badge problem-badge--float">Differentiation</span>
     </div>
   </div>
 </section>
