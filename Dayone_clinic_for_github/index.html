@@ -141,52 +141,6 @@ nav {
 
 .position-band .position-inner { padding: 0 6rem; }
 
-@media (max-width: 960px) {
-  nav { padding: 0 1.5rem; }
-  .hero { padding: 1.5rem 1.5rem 6rem; min-height: calc(100vh - 56px); }
-  .hero-circle-1 { width: 520px; height: 520px; top: -130px; right: -90px; }
-  .hero-circle-2 { width: 320px; height: 320px; bottom: 40px; right: 120px; }
-  .hero-number { display: none; }
-  .hero-bottom-bar { display: none; }
-  .hero-scroll { left: 1.5rem; bottom: 1.5rem; }
-  .hero-actions { gap: 1rem; }
-  .btn-primary, .btn-ghost { min-width: auto; }
-  section, .section-full, .section-inner, .bi-section, .roadmap-band, .color-band { width: 100%; padding-left: 2rem; padding-right: 2rem; }
-  .position-band .position-inner { padding: 0 2rem; }
-  .hero-tag { font-size: 10px; margin-bottom: 1rem; }
-  .hero h1 { font-size: clamp(32px, 10vw, 48px); }
-  .hero-desc { font-size: 14px; line-height: 1.7; }
-  .section-divider { margin: 1.2rem 0 2rem; }
-}
-
-@media (max-width: 760px) {
-  .hero-actions { flex-direction: column; align-items: stretch; }
-  .btn-primary, .btn-ghost { width: 100%; justify-content: center; }
-  .section-eyebrow { font-size: 9px; letter-spacing: 0.18em; }
-  .hero h1 { font-size: 30px; }
-  .section-divider { margin: 1rem 0 1.8rem; }
-  .color-swatches { grid-template-columns: repeat(3,1fr); }
-}
-
-@media (max-width: 540px) {
-  .nav-right { display: none; }
-  .hero { padding: 1.5rem 1rem 5rem; }
-  .hero-scroll { left: 1rem; }
-  .hero-actions { gap: 0.75rem; }
-  .hero h1 { font-size: 28px; line-height: 1.1; }
-  .hero-desc { font-size: 14px; }
-  .strategy-item { grid-template-columns: 1fr; }
-  .strategy-idx { border-right: none; padding-bottom: 0; }
-  .strategy-body { padding-left: 0; }
-  .phase-track { grid-template-columns: 1fr; gap: 1rem; }
-  .color-swatches { grid-template-columns: repeat(2,1fr); }
-  footer { padding: 2rem 1rem; }
-  .footer-meta { text-align: left; }
-  .sol-card, .bi-card { padding: 1.5rem; }
-  .section-eyebrow { justify-content: flex-start; }
-  .keypoint { padding: 1rem; }
-}
-
 .hero-tag::before {
   content: ''; display: block;
   width: 24px; height: 0.5px;
@@ -363,6 +317,7 @@ p { font-size: 14.5px; color: var(--ink-mid); line-height: 1.9; max-width: 620px
   border: 0.5px solid rgba(91,141,184,0.2);
 }
 .problem-card--wide {
+  grid-column: 1 / -1;
   display: flex;
   flex-wrap: wrap;
   gap: 1.5rem;
@@ -543,7 +498,7 @@ p { font-size: 14.5px; color: var(--ink-mid); line-height: 1.9; max-width: 620px
 .color-popup {
   position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
   background: var(--white); border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-  padding: 2rem; max-width: 400px; z-index: 1000; display: none;
+  padding: 2rem; max-width: 400px; width: calc(100% - 2rem); z-index: 1000; display: none;
   border: 1px solid var(--off-white2);
 }
 .color-popup.show { display: block; }
@@ -621,7 +576,7 @@ p { font-size: 14.5px; color: var(--ink-mid); line-height: 1.9; max-width: 620px
 .p5 { background: #EAF0F8; color: #2A4A7A; border: 0.5px solid #A8C4E0; }
 
 /* ── BI DETAIL ── */
-.bi-section { padding: 7rem 6rem; }
+.bi-section { padding: 7rem 6rem; max-width: 1200px; margin: 0 auto; }
 .bi-grid {
   display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-top: 3rem;
 }
@@ -691,14 +646,17 @@ footer {
   .insight-layout { grid-template-columns: 1fr; gap: 1.5rem; }
   .solutions-grid { grid-template-columns: 1fr; gap: 1rem; }
   .phase-track { grid-template-columns: repeat(2,1fr); gap: 1rem; }
-  .numbers-strip { grid-template-columns: repeat(2,1fr); padding: 2rem 1.5rem; }
+  .numbers-strip { grid-template-columns: repeat(2,1fr); padding: 2rem 1.5rem; gap: 1px; }
+  .num-item { border-right: none; padding: 1rem; }
+  .num-item:nth-child(odd) { border-right: 0.5px solid rgba(255,255,255,0.15); }
   .bi-grid { grid-template-columns: 1fr; gap: 1.5rem; }
   .color-swatches { grid-template-columns: repeat(3,1fr); }
-  .strategy-tabs { display: flex; gap: 0.5rem; overflow-x: auto; padding-bottom: 0.75rem; }
-  .strategy-tab { flex: 1 0 auto; min-width: 120px; padding: 10px 14px; }
+  .strategy-tabs { display: flex; gap: 0; overflow-x: auto; padding-bottom: 0; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+  .strategy-tabs::-webkit-scrollbar { display: none; }
+  .strategy-tab { flex: 1 0 auto; min-width: 100px; padding: 10px 14px; font-size: 13px; white-space: nowrap; }
   .strategy-item { grid-template-columns: 1fr; }
-  .strategy-idx { border-right: none; padding-bottom: 0; }
-  .strategy-body { padding-left: 0; }
+  .strategy-idx { border-right: none; padding: 0; display: none; }
+  .strategy-body { padding: 1.5rem 0; }
   footer { padding: 3rem 1.5rem; grid-template-columns: 1fr; }
   .footer-meta { text-align: left; }
   .nav-right { gap: 1rem; }
@@ -709,6 +667,7 @@ footer {
   .hero-tag { font-size: 10px; margin-bottom: 1rem; }
   .hero h1 { font-size: clamp(30px, 10vw, 42px); }
   .hero-desc { font-size: 14px; line-height: 1.7; }
+  .hero-desc br { display: none; }
   .hero-actions { flex-direction: column; align-items: stretch; }
   .btn-primary, .btn-ghost { width: 100%; justify-content: center; }
   .section-eyebrow { font-size: 9px; letter-spacing: 0.16em; margin-bottom: 0.75rem; }
@@ -731,15 +690,18 @@ footer {
   .position-band .position-inner { padding: 0 1rem; }
   .problem-card { padding: 1.5rem; }
   .strategy-item { grid-template-columns: 1fr; }
-  .strategy-idx { border-right: none; padding-bottom: 0; }
-  .strategy-body { padding-left: 0; }
+  .strategy-idx { display: none; }
+  .strategy-body { padding: 1.25rem 0; }
   .phase-track { grid-template-columns: 1fr; gap: 1rem; }
   .color-swatches { grid-template-columns: repeat(2,1fr); }
-  .numbers-strip { grid-template-columns: 1fr; padding: 1.5rem 1rem; }
-  .footer { padding: 2rem 1rem; }
+  .numbers-strip { grid-template-columns: repeat(2,1fr); padding: 1.5rem 1rem; }
+  footer { padding: 2rem 1rem; }
   .footer-meta { text-align: left; }
   .section-divider { margin: 1rem 0 1.5rem; }
   .section-eyebrow { justify-content: flex-start; }
+  .sol-card, .bi-card { padding: 1.5rem; }
+  .keypoint { padding: 1rem; }
+  .insight-keypoints { grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
 }
 </style>
 </head>
